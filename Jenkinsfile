@@ -18,6 +18,7 @@ pipeline {
                 sh 'docker build -t tomcat:ver1.1 .'  
                 }
 	    }
+	 }
                 stage('push') {
 	
             steps {
