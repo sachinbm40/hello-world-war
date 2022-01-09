@@ -31,6 +31,13 @@ pipeline {
                 sh 'docker push urssharath/myrepo:2.0'
          }
 	 }
+		 stage('deploy'){
+		 agent { label 'dj02' }
+	     steps{
+	        sh 'docker rm -f mytomcat'
+	         sh 'docker run -d --name mytomcat -p 7777:8080 urssharath/myrepo:1.0'
+	     }
+	 }
 	
     }
 }
