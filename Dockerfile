@@ -3,6 +3,6 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package
 
-FROM tomcat:8.5.43-jdk8
+FROM charan021/charan021:1.2
 COPY --from=maven_build /app/target/* /usr/local/tomcat/webapps/
 
