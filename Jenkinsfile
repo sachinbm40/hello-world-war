@@ -17,7 +17,7 @@ pipeline {
                   sh 'pwd'
                 sh 'ls'
             
-                sh 'docker build -t tomcat:ver1.1 .'  
+                sh 'docker build -t tomcat:ver1.5 .'  
                 }
 	    }
 	 }
@@ -26,7 +26,7 @@ pipeline {
 	
             steps {
 		    sh 'ls'
-            sh 'docker tag tomcat:ver1.1 urssharath/myrepo:1.0'
+            sh 'docker tag tomcat:ver1.5 urssharath/myrepo:1.0'
 		    sh 'docker images'
                 sh 'docker push urssharath/myrepo:1.0'
          }
