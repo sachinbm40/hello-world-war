@@ -3,14 +3,14 @@ pipeline {
 	stages {
 	    
        stage('checkout') {
-	       agent { label 'jenkins' }
+	       agent { label 'dj' }
             steps {
                 sh 'sudo rm -rf hello-world-war'
-	sh 'git clone https://github.com/charan021/hello-world-war.git'	
+	sh 'git clone https://github.com/Urssharath/hello-world-war.git'	
               }
         }
 	 stage('build') {
-		 agent { label 'jenkins' }
+		 agent { label 'dj' }
 	
             steps {
                 dir('hello-world-war'){
@@ -22,18 +22,18 @@ pipeline {
 	    }
 	 }
                 stage('push') {
-			agent { label 'jenkins' }
+			agent { label 'dj' }
 	
             steps {
-            sh 'docker tag tomcat:ver1.1 charan021/charan021:1.2'
-                sh 'docker push charan021/charan021:1.2'
+            sh 'docker tag tomcat:ver1.1 sharath/pushdjf:1.0'
+                sh 'docker push sharath/pushdjf:1.0'
          }
 	 }
 	 stage('deploy'){
-		 agent { label 'jenkins_slave' }
+		 agent { label 'dj02' }
 	     steps{
 	        sh 'docker rm -f mytomcat'
-	         sh 'docker run -d --name mytomcat -p 7777:8080 charan021/charan021:1.2'
+	         sh 'docker run -d --name mytomcat -p 7777:8080 sharath/pushdjf:1.0'
 	     }
 	 }
     }
