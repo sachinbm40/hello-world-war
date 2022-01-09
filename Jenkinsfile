@@ -1,6 +1,6 @@
 pipeline {
-	agent { label 'none' }
-    stages {
+	agent none
+	stages {
 	    
        stage('checkout') {
 	       agent { label 'jenkins' }
