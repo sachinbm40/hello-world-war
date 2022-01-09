@@ -1,44 +1,18 @@
-pipeline {
-	agent none
-	stages {
-	    
-       stage('checkout') {
-	       agent { label 'slave' }
-            steps {
-                sh 'sudo rm -rf hello-world-war'
-	sh 'git clone https://github.com/sachinbm40/hello-world-war.git'	
-              }
-        }
-	 stage('build') {
-		 agent { label 'slave' }
-	
-            steps {
-                dir('hello-world-war'){
-                  sh 'pwd'
-                sh 'ls'
-            
-                sh 'docker build -t tomcat:ver1.1 .'  
-			
-                }
-	    }
-	 }
-                stage('push') {
-			agent { label 'slave' }
-	
-            steps {
-		    sh 'ls'
-            sh 'docker tag tomcat:ver1.1 sachinbm40/myrepo:1.0'
-		    sh 'docker images'
-                sh 'docker push sachinbm40/myrepo:1.0'
-         }
-	 }
-		 stage('deploy'){
-		 agent { label 'jenkins' }
-	     steps{
-	        sh 'docker rm -f mytomcat'
-	         sh 'docker run -d --name mytomcat -p 7777:8080 sachinbm40/myrepo:1.0'
-	     }
-	 }
-	
-    }
-}
+<html>
+<head>
+<title>Welcome to devops</title>
+</head>
+<body style="background-color:powderblue;">
+
+<h1> Hello every one</h1>
+<h1>Welcome to Devops class</h1>
+
+<img src="goodmrng.jpg" style="border:4px solid green;" width="300" height="300" />
+
+<p>
+It is now
+<%= new java.util.Date() %></p>
+<p>
+You are coming from
+<%= request.getRemoteAddr()  %></p>
+</body>
