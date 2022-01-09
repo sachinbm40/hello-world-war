@@ -1,11 +1,11 @@
 pipeline {
-	agent { label 'tom' }
+	agent { label 'jenkins' }
     stages {
 	    
        stage('checkout') {
             steps {
                 sh 'sudo rm -rf hello-world-war'
-	sh 'git clone https://github.com/akshayvdes/hello-world-war.git'	
+	sh 'git clone https://github.com/charan021/hello-world-war.git'	
               }
         }
 	 stage('build') {
