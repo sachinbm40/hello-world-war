@@ -26,9 +26,9 @@ pipeline {
 	
             steps {
 		    sh 'ls'
-            sh 'docker tag tomcat:ver1.5 urssharath/myrepo:1.0'
+            sh 'docker tag tomcat:ver1.5 urssharath/myrepo:2.0'
 		    sh 'docker images'
-                sh 'docker push urssharath/myrepo:1.0'
+                sh 'docker push urssharath/myrepo:2.0'
          }
 	 }
 	
