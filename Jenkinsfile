@@ -17,7 +17,7 @@ pipeline {
                   sh 'pwd'
                 sh 'ls'
             
-                sh 'docker build -t tomcat:${BUILD_NUMBER} .'  
+                sh 'docker build -t tomcat:ver1.1 .'  
 			
                 }
 	    }
@@ -27,16 +27,16 @@ pipeline {
 	
             steps {
 		    sh 'ls'
-            sh 'docker tag tomcat:${BUILD_NUMBER} sachinbm40/myrepo:${BUILD_NUMBER}'
+            sh 'docker tag tomcat:ver1.1 sachinbm40/myrepo:1.0'
 		    sh 'docker images'
-                sh 'docker push sachinbm40/myrepo:${BUILD_NUMBER}'
+                sh 'docker push sachinbm40/myrepo:1.0'
          }
 	 }
 		 stage('deploy'){
 		 agent { label 'jenkins' }
 	     steps{
 	        sh 'docker rm -f mytomcat'
-	         sh 'docker run -d --name mytomcat -p 7777:8080 sachinbm40/myrepo:${BUILD_NUMBER}'
+	         sh 'docker run -d --name mytomcat -p 7777:8080 sachinbm40/myrepo:1.0'
 	     }
 	 }
 	
