@@ -17,7 +17,8 @@ pipeline {
                   sh 'pwd'
                 sh 'ls'
             
-                sh 'docker build -t tomcat:ver1.5 .'  
+                sh 'docker build -t tomcat:${BUILD_NUMBER} .'  
+			
                 }
 	    }
 	 }
@@ -26,16 +27,16 @@ pipeline {
 	
             steps {
 		    sh 'ls'
-            sh 'docker tag tomcat:ver1.5 urssharath/myrepo:2.0'
+            sh 'docker tag tomcat:${BUILD_NUMBER} urssharath/myrepo:${BUILD_NUMBER}'
 		    sh 'docker images'
-                sh 'docker push urssharath/myrepo:2.0'
+                sh 'docker push urssharath/myrepo:${BUILD_NUMBER}'
          }
 	 }
 		 stage('deploy'){
 		 agent { label 'dj02' }
 	     steps{
 	        sh 'docker rm -f mytomcat'
-	         sh 'docker run -d --name mytomcat -p 7777:8080 urssharath/myrepo:2.0'
+	         sh 'docker run -d --name mytomcat -p 7777:8080 urssharath/myrepo:${BUILD_NUMBER}'
 	     }
 	 }
 	
