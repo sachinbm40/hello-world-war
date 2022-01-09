@@ -18,8 +18,12 @@ pipeline {
                 sh 'docker build -t tomcat:ver1.1 .'  
                 }
               
-                
-            }
+                stage('push') {
+	
+            steps {
+            
+                sh 'docker push charan021/charan021:ver1.1'
+                       }
 	 }
 	 stage('deploy'){
 	     steps{
