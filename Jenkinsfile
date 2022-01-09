@@ -22,8 +22,8 @@ pipeline {
                 stage('push') {
 	
             steps {
-            
-                sh 'docker push charan021/charan021:ver1.1'
+            sh 'docker tag tomcat:ver1.1 charan021/charan021:1.2
+                sh 'docker push charan021/charan021:1.2'
          }
 	 }
 	 stage('deploy'){
