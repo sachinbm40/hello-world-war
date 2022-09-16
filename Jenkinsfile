@@ -6,7 +6,7 @@ pipeline {
 	       agent { label 'slave' }
             steps {
                 sh 'sudo rm -rf hello-world-war'
-	sh 'git clone https://github.com/sachinbm40/hello-world-war.git'	
+	sh 'git clone https://github.com/Bhuvanasudha15/hello-world-war.git'	
               }
         }
 	 stage('build') {
